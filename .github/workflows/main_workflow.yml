@@ -1,33 +1,22 @@
-name: Statisticker 
+name: Test
 
 on: [push, pull_request]
 
 jobs:
 
-  build:
-
+  test:
+    runs-on: ubuntu-latest
     strategy:
-      matrix:
-        configuration: [Debug]
-
-    runs-on: windows-latest  # For a list of available runner types, refer to
-                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
-
-    env:
-      Solution_Name: statisticker.sln
-      Test_Project_Path: Statistics.Test\Statistics.Test.csproj                 # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-
+      fail-fast: false
+      matrix: 
+        run: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
 
-    # Install the .NET Core workload
-    - name: Install .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.101
+      - uses: actions/checkout@v2
 
-    - name: Run tests
-      run: dotnet test
+
+      - name: chmod
+        run: chmod +x xxx
+
+      - name: run
+        run: ./xxx
